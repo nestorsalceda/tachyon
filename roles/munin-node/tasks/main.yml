@@ -16,15 +16,15 @@
     src=/usr/share/munin/plugins/{{ item.plugin | default( item.name ) }}
     state=link
   with_flattened:
-    - munin_plugins
-    - munin_node_plugins
+    - '{{ munin_plugins }}'
+    - '{{ munin_node_plugins }}'
   notify: restart munin
 
 - name: disable plugins
   file:
     path=/etc/munin/plugins/{{ item }}
     state=absent
-  with_items: munin_node_plugins_disabled
+  with_items: '{{ munin_node_plugins_disabled }}'
   notify: restart munin
 
 - name: configure additional plugins

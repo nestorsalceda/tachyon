@@ -16,9 +16,9 @@
     from="{{ item.from | default(omit) }}"
 
   with_flattened:
-    - firewall_ssh_rules
-    - firewall_default_rules
-    - firewall_rules
+    - '{{ firewall_ssh_rules }}'
+    - '{{ firewall_default_rules }}'
+    - '{{ firewall_rules }}'
 
 - name: enable
   ufw:
