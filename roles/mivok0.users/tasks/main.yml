@@ -26,8 +26,8 @@
 - name: SSH keys
   authorized_key: user="{{item.0.username}}" key="{{item.1}}"
   with_subelements:
-    - users
-    - ssh_key
+    - '{{ users }}'
+    - '{{ ssh_key }}'
   tags: ['users','configuration']
 
 - name: Deleted user removal
